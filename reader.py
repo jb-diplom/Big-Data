@@ -517,7 +517,7 @@ def collateDocContents(allEntryDict, deleteBadEntries=True):
             toBeRemoved.append(key)
 
     if deleteBadEntries:    # remove all old entries or those without contents
-        for gone in tqdm(toBeRemoved, desc="Deleting bad entries"):
+        for gone in tqdm(toBeRemoved, desc="Data cleaning. Removing entries"):
             allEntryDict.pop(gone)   
          
     return  

@@ -85,20 +85,20 @@ def loadWordEmbeddings(modelName="fasttext_model300"):
     return
 
 #%% getWordEmbeddingModel TODO try out other word embedding (fasttext_model300)
-def getWordEmbeddingModel():
+def getWordEmbeddingModel(weName="glove-wiki-gigaword-50"):
     # Download or load the WordEmbedding models
     # loadWordEmbeddings("w2v_model")
     # return api.load("glove-wiki-gigaword-50")
-    return api.load('fasttext-wiki-news-subwords-300')
+    return api.load(weName)
 
 #%% softCosineSimilarityTest
 #   https://www.machinelearningplus.com/nlp/cosine-similarity/
 
-def softCosineSimilarityTest(numtestdocs=20):
+def softCosineSimilarityTest(numtestdocs=20, weName="glove-wiki-gigaword-50"):
     # documents=getTestDocuments()
     # documents=getSampleDocs(numtestdocs)
     documents=getDocList(limit=numtestdocs)
-    model=getWordEmbeddingModel()
+    model=getWordEmbeddingModel(weName=weName)
     # Create gensim Dictionary of unique IDs of all words in all documents
     dictionary = corpora.Dictionary([simple_preprocess(doc) for doc in documents])
 
@@ -142,7 +142,7 @@ def softCosineSimilarityTest(numtestdocs=20):
 #%% deriveSoftCosineSimilarityMatrix
 #   https://www.machinelearningplus.com/nlp/cosine-similarity/
 
-def deriveSoftCosineSimilarityMatrix(allDict, limit=None):
+def deriveSoftCosineSimilarityMatrix(allDict, limit=None, weName="glove-wiki-gigaword-50"):
     # documents=getTestDocuments()
     docsZip=getDocList(allDict,limit,stop_list=getCustomStopWords(), with_ids=True)
 
@@ -151,7 +151,7 @@ def deriveSoftCosineSimilarityMatrix(allDict, limit=None):
     for i,j in docsZip:
         documents.append(j)
         ids.append(i)
-    model=getWordEmbeddingModel()
+    model=getWordEmbeddingModel(weName=weName)
     # Create gensim Dictionary of unique IDs of all words in all documents
     # pyDAVis param "d"
     dictionary = corpora.Dictionary([simple_preprocess(doc) for doc in documents])
@@ -192,16 +192,16 @@ def deriveSoftCosineSimilarityMatrix(allDict, limit=None):
 
 #%% savePickle
 
-def saveDFPickle(df):
+def saveDFPickle(df, path = "outdata"):
     now=datetime.datetime.now()
     runtimeStr=now.strftime("%d%m%Y_%H%M%S")    # for saving datafiles uniquely
-    outfileName="outdata/softcosmatrix" + runtimeStr + ".pickle"
+    outfileName=path + "/softcosmatrix" + runtimeStr + ".pickle"
     with open(outfileName, 'wb') as outfile:
         pickle.dump(df, outfile, pickle.HIGHEST_PROTOCOL)
         
     return outfileName
 
-def loadMatrixFile(path = "outdata" ):
+def loadMatrixFiles(path = "outdata" ):
     matrices=[]
     for file in glob.glob(path + "/*.pickle"):
         print ("loading file: ", file)
