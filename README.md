@@ -4,13 +4,13 @@ Multiple visualizations are displayed in a Jupyter Notebook
 
 ## Getting Started
 
-The easiest approach is to clone this repository (https://github.com/jb-diplom/Big-Data/edit/master/README.md) and test the Notebook [./RSSNewsIdentification.ipynb] on Jupyter.
+The easiest approach is to clone this repository (https://github.com/jb-diplom/Big-Data/edit/master/README.md) and test the Notebook [RSSNewsIdentification.ipynb](./RSSNewsIdentification.ipynb) on Jupyter.
 
 ### Prerequisites
 
 To run all the implemented features you'll need:
 * Python 3.7 or newer
-* Jupyter (I have been using Version 6.03)
+* Jupyter (Version 6.0.3 was used for the project)
 * Anaconda (for easy and consistent installation)
 * Gensim (for Word Embedding tools and downloader, corpora, topic modelling)
 * Natural Language Toolkit (NLTK) for text processing (Lemmatization)
@@ -30,9 +30,9 @@ Several Python packages are necessary to complete analysis/computations and for 
 * `conda install -c conda-forge ipyvolume`
 * `conda install -c conda-forge nodejs`
 * `conda install -c conda-forge ipydatawidgets`
-* ```import nltk
-nltk.download(’vader_lexicon’)```
-* nltk.download()` --> choose Corpora/wordnet
+* `import nltk`
+* `nltk.download(’vader_lexicon’)`
+* `nltk.download()` --> choose Corpora/wordnet
 
 ## Usage
 
