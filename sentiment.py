@@ -313,7 +313,7 @@ def runSentiment (allDict, sm, numdocs=500):
     updateDictionaryByFuzzyRelevanceofTopics(topics,sm, limit=None, threshold=20, remove=True)
     gt=getTopicIdDict(sm)
     tlist=[item[0] for item in topics]
-    top=tlist[4]
+    top=tlist[5]
     df2=getSentimentsForTopic3(top,sm)
     plotSentiment3D(df2, sm, notebook=False, topic=top)
     return

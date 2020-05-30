@@ -612,10 +612,10 @@ def doFullTopicInitialize(remove=False, maxNum=30, ngram_range=(3,3),threshold=7
     return allDict
 
 #%% testDisplayTopicsAndFeeds Scatterplot
-def testDisplayTopicsAndFeeds(numArticles=300, dict=None, numTopics=30,
+def testDisplayTopicsAndFeeds(numArticles=500, dict=None, numTopics=30,
                               ngram_range=(3,3)):
     if not dict:
-        dict=loadAllFeedsFromFile()
+        dict=loadAllFeedsFromFile(limitsize=numArticles)
 
     docl=getDocList(smallDict(dict,numArticles),
                     reloaddocs=False,

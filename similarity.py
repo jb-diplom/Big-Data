@@ -52,7 +52,7 @@ global w2v_model           # Defined as global variable due to very long loading
 # w2v_model=False
 # glove-wiki-gigaword-300
 
-def loadWordEmbeddings(modelName="w2v_model"):
+def loadWordEmbeddings(modelName="fasttext_model300"):
     """
     Loads the named word embedding model (used in soft CosineSimilarity test)
     NOTE1:  the first call for "fasttext" includes a download of ca. 1GB of data, 
@@ -88,7 +88,8 @@ def loadWordEmbeddings(modelName="w2v_model"):
 def getWordEmbeddingModel():
     # Download or load the WordEmbedding models
     # loadWordEmbeddings("w2v_model")
-    return api.load("glove-wiki-gigaword-50")
+    # return api.load("glove-wiki-gigaword-50")
+    return api.load('fasttext-wiki-news-subwords-300')
 
 #%% softCosineSimilarityTest
 #   https://www.machinelearningplus.com/nlp/cosine-similarity/
