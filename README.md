@@ -4,57 +4,38 @@ Multiple visualizations are displayed in a Jupyter Notebook
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The easiest approach is to clone this repository (https://github.com/jb-diplom/Big-Data/edit/master/README.md) and test the Notebook [./RSSNewsIdentification.ipynb] on Jupyter.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+To run all the implemented features you'll need:
+*Python 3.7 or newer
+*Jupyter
+*Anaconda (for easy and consistent installation)
+*Gensim
+*Natural Language Toolkit (NLTK) for text processing
+*Bokeh
+*Feedparser
+*pyLDAvis
+*vaderSentiment 
+*ipyvolume
 
-```
-Give examples
-```
+### Installation
 
-### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
 Explain how to run the automated tests for this system
 
-### Break down into end to end tests
+### Features
 
+Initially the user can load data from a pre-configured set of 50 RSS-Feeds, or specify custom feeds for scraping. This takes typically aproximately 75s. Additionally there is a large corpus of test data in the directory [./data/] which may be loaded 
 Explain what these tests test and why
 
 ```
 Give an example
 ```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
@@ -72,7 +53,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Janice Butle** - *Initial work* - [Big-Data Project](https://github.com/jb-diplom/Big-Data)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
