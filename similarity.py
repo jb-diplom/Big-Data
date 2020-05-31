@@ -139,7 +139,7 @@ def softCosineSimilarityTest(numtestdocs=20, weName="glove-wiki-gigaword-50"):
 #%% deriveSoftCosineSimilarityMatrix
 #   https://www.machinelearningplus.com/nlp/cosine-similarity/
 
-def deriveSoftCosineSimilarityMatrix(allDict, limit=None, weName="glove-wiki-gigaword-50"):
+def deriveSoftCosineSimilarityMatrix(allDict, limit=None, weName="glove-wiki-gigaword-50", simThreshold=0.3):
     # documents=getTestDocuments()
     docsZip=getDocList(allDict,limit,stop_list=getCustomStopWords(), with_ids=True)
 
@@ -167,7 +167,7 @@ def deriveSoftCosineSimilarityMatrix(allDict, limit=None, weName="glove-wiki-gig
     # Prepare the similarity matrix
     similarity_matrix = model.similarity_matrix(    dictionary,
                                                     tfidf=tf_idf,
-                                                    threshold=0.3,
+                                                    threshold=simThreshold,
                                                     exponent=2.0, 
                                                     nonzero_limit=100)
     
@@ -247,6 +247,7 @@ def calculateXYZByPCAMethod(df, clusterNumber=20, threshold=0.5):
     new_df['size'] = sizes
 
     return new_df
+#%%
 
 def show3D(df, title=""):
 
