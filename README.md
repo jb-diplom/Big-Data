@@ -37,10 +37,8 @@ Several Python packages are necessary to complete analysis/computations and for 
 
 ## Usage
 
-The central element to access the funtionality of the project work is by loading the RSSNewsIdentification.ipynb: Jupyter Notebook.
-Virtually all of the useful configurative settings can be specified or modified in the run parameters, which are held in an editable Python dictionary near the beginning of the notebook. The parameters are documented as comments in the code (see below).
-
-Some  
+The central element to access the funtionality of the project work is by loading the [RSSNewsIdentification.ipynb](./RSSNewsIdentification.ipynb) Jupyter Notebook.
+Virtually all of the useful configurative settings can be specified or modified in the run parameters, which are held in an editable Python dictionary in a cell near the beginning of the notebook. Plausibel parameters are documented as comments in the code (see below).
 
 ### The Run Parameters
 ```
@@ -71,6 +69,14 @@ runParams={'allFeeds':       getFeedDict(),   # A collection of 50 URLs for RSS 
            'matrixDir':      './outdata',     # relative path for saving matrices to file
            'saveMatrix':     False}           # whether to save matrix to file or not
 ```
+### A few Words on Performance
+Due to the potentially large amounts and numbers of data involved, running the notebook in its entirety can take many hours. This may yeild very interesting results, but you may also be interested in a quick overview. Some key parameters and options have been designed to help you (and especially me) to run through tests fairly quickly. The following settings are critical for performance and running times:
+* `weModel` Tests have shown - not surprisingly - far better quality of results with higher dimension word embeddings. However, start times and running times in calculating the soft cosine similarity matrix easily run into hours (or a dead end) with `fasttext-wiki-news-subwords-300`. For speed, definitely use the preconfigured `glove-wiki-gigaword-50`
+* `removeTopics` If set to false, then the running time will be typically (depending also on number of topics required and thresholds) a factor 3 or 4 longer. Theoretically you may miss out on some possible clustering which the soft cosine method finds but TF-IDF doesn't by removing articles, but it's probably sufficient to specify a few topics more and save a lot or computational time, by using this flag.
+* `collectFeeds` If you just want to play with the test data and don't need fresh articles, the scraping stage can be skipped by setting this to `False`
+* `articleLimit` By setting this to 1000 or less you can get a quick overview of the analysis results. If you want to be sure to miss none of the article content, you have to set this to `None`, though. Probably time tp grab a capuccino, in that case :-)
+* `thresholdFuzzy`and `thresholdCosine` in practice you get to see some optically interesting results with lower values here. However this costs time and tends to include clustering which will be more like noise than anything else.
+
 ### Test Data
 Two crucial sets of data are supplied to help the user get up and running very quickly.
 1. A set of 50 fully tested RSS-Feed URLs, which are loaded from the function `getFeedDict()`. The user can simply specify custom values in an equivalently structured dictionary,  .e.g.
@@ -97,7 +103,7 @@ The steps which can be walked through are:
 12. The soft cosine similarity matrix is derived for the corpus to ascertain similarities between every combinational pair of articles. This employs word embeddings for the calculation of the comparison vectors (see also https://www.machinelearningplus.com/nlp/cosine-similarity/)
 13. Using the soft cosine similarity matrix, multiple 3d visualizations of the clusters are produced. The colourization is simply achieved through the application of spectral clustering, a representation of the coordinates of the "bubbles" is achieved through dimension reduction using the PCA method, to acieve a physical separation according to the cosine similarity, whilst the size of each bubble is calculated to be proportional to the highest topical relevance from the article's rom taken from the similarity matrix.
 The user may specify the number of topics to display and the cut-off threshold for deciding if an article should be represented in the plot.
-14. A specified number of topics are representen in the pyLDAvis visulization
+14. A specified number of topics are representen in the pyLDAvis visualization
 15. A sentiment analysis of each article is conducted using Vader. A 3d scatterplot of the sentiment for topically grouped sets of articles. The coordinates are derived from the positiv, negativ and neutral sentiment values. The colour represents the compound sentiment. The size of the bubbles are exponentially proportional to the strength of topicality (cf topical relevance percentage in 9. above) for the preferred topic which can be conveniently chosen from a pull-down list of possible topics. A change of topic triggers a redraw of the 3d-visualization.
 16. Finally the user can browse through the article content grouped by topic. The article content together with a subset of meta-data for the article is displayed in a viewer.
 
