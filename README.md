@@ -80,8 +80,12 @@ Due to the potentially large volume of data involved, running the notebook in it
 ### Test Data
 Two crucial sets of data are supplied to help the user get up and running very quickly.
 1. A set of 50 fully tested RSS-Feed URLs, which can be conveniently loaded from the function `getFeedDict()`. The user can simply specify custom values in an equivalently structured dictionary,  .e.g.
-```python
-{'Buzzfeed': 'https://www.buzzfeed.com/world.xml', 'Al Jazeera': 'http://www.aljazeera.com/xml/rss/all.xml','The Guardian': 'https://www.theguardian.com/world/rss','CNBC': 'https://www.cnbc.com/id/100727362/device/rss/rss.html','RT': 'https://www.rt.com/rss/news/'}
+>```python
+{'Buzzfeed': 'https://www.buzzfeed.com/world.xml', 
+'Al Jazeera': 'http://www.aljazeera.com/xml/rss/all.xml',
+'The Guardian': 'https://www.theguardian.com/world/rss',
+'CNBC': 'https://www.cnbc.com/id/100727362/device/rss/rss.html',
+'RT': 'https://www.rt.com/rss/news/'}
 ```
 
 2. A corpus of over 11000 articles which have been collected between 02.05.2020 and 31.05.2020 daily from the 50 RSS-feeds mentioned in 1.  
