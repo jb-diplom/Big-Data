@@ -103,29 +103,29 @@ The user may specify the number of topics to display and the cut-off threshold f
 
 ## Some Grafics from the Notebook
 
-###Article Sizes
+### Article Sizes
 
-[Article Sizes](./images/ArticleSizes.png)
+![Article Sizes](./images/ArticleSizes.png)
 
-###Tag Usage
+### Tag Usage
 
-[Tag Usage](./images/TagUsage.png)
+![Tag Usage](./images/TagUsage.png)
 
-###Cosine Similarity (3d interactive plot)
+### Cosine Similarity (3d interactive plot)
 
-[3d Cosine Similarity](./images/3dCosineSimilarity1.png)
+![3d Cosine Similarity](./images/3dCosineSimilarity1.png)
 
-###LDA Visualization (pyLDAvis interactive viewer)
+### LDA Visualization (pyLDAvis interactive viewer)
 
-[LDA Visualization](./images/pyLDAvis.png)
+![LDA Visualization](./images/pyLDAvis.png)
 
-###Sentiment Analysis (3d interactive plot)
+### Sentiment Analysis (3d interactive plot)
 
-[Sentiment Analysis](./images/SentiAnalysis2.png)
+![Sentiment Analysis](./images/SentiAnalysis2.png)
 
-###Content Viewer
+### Content Viewer
 
-[Content Viewer](./images/ContentViewer.png)
+![Content Viewer](./images/ContentViewer.png)
 
 ## Versioning
 
