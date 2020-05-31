@@ -10,16 +10,17 @@ The easiest approach is to clone this repository (https://github.com/jb-diplom/B
 
 To run all the implemented features you'll need:
 * Python 3.7 or newer
-* Jupyter (Version 6.0.3 was used for the project)
-* Anaconda (for easy and consistent installation)
-* Gensim (for Word Embedding tools and downloader, corpora, topic modelling)
+* Jupyter (version 6.0.3 was used for the project)
+* Anaconda (version 1.9.12 was used for the project)
+* Gensim (for corpora, topic modelling, word wmbedding tools and downloade)
 * Natural Language Toolkit (NLTK) for text processing (Lemmatization)
 * VaderSentiment (Sentiment analysis)
-* Bokeh (Visualization widgets and coloring)
-* Feedparser (Scraping RSS Feeds)
-* pyLDAvis (Visualization of LDA analysis)
-* ipyvolume (3d rotational scatterplots) 
-* Beautiful Soup (parsing and cleaning HTML/XML)
+* Bokeh (visualization widgets and coloring)
+* Feedparser (scraping of RSS Feeds)
+* pyLDAvis (visualization of LDA analysis)
+* ipyvolume (3d interactive scatterplots) 
+* ipydatawidgets (required for the interactive parts of the notebook and to ensure correct display of the progress bars)
+* Beautiful Soup (parsing and cleaning of HTML/XML)
 * sklearn (spectral clustering and dimension reduction using the PCA method)
 
 ### Installation
@@ -32,13 +33,12 @@ Several Python packages are necessary to complete analysis/computations and for 
 * `conda install -c conda-forge nodejs`
 * `conda install -c conda-forge ipydatawidgets`
 * `import nltk`
-* `nltk.download(’vader_lexicon’)`
+* `nltk.download()` --> choose vader_lexicon
 * `nltk.download()` --> choose Corpora/wordnet
 
 ## Usage
 
-The central element to access the funtionality of the project work is by loading the [RSSNewsIdentification.ipynb](./RSSNewsIdentification.ipynb) Jupyter Notebook.
-Virtually all of the useful configurative settings can be specified or modified in the run parameters, which are held in an editable Python dictionary in a cell near the beginning of the notebook. Plausibel parameters are documented as comments in the code (see below).
+The central element for accessing the funtionality of the project work is by loading the [RSSNewsIdentification.ipynb](./RSSNewsIdentification.ipynb) Jupyter Notebook. Virtually all of the useful configurative settings can be specified or modified in the run parameters, an editable Python dictionary in a cell near the beginning of the notebook. Plausible parameters are documented as comments in the code (see below).
 
 ### The Run Parameters
 ```
@@ -70,29 +70,29 @@ runParams={'allFeeds':       getFeedDict(),   # A collection of 50 URLs for RSS 
            'saveMatrix':     False}           # whether to save matrix to file or not
 ```
 ### A few Words on Performance
-Due to the potentially large amounts and numbers of data involved, running the notebook in its entirety can take many hours. This may yield very interesting results, but you may also be interested in a quick overview. Some key parameters and options have been designed to help you (and especially me) to run through tests fairly quickly. The following settings are critical for performance and running times:
-* `weModel`: Tests have shown - not surprisingly - far better quality of results with higher dimension word embeddings. However, start times and running times in calculating the soft cosine similarity matrix easily run into hours (or a dead end) with `fasttext-wiki-news-subwords-300`. For speed, definitely use the preconfigured `glove-wiki-gigaword-50`
-* `removeTopics`: If set to `False`, then the running time will be typically (depending also on number of topics required and thresholds) a factor 3 or 4 longer. Theoretically you may miss out on some possible clustering which the soft cosine method finds but TF-IDF doesn't by removing articles, but it's probably sufficient to specify a few topics more and save a lot or computational time, by using this flag.
+Due to the potentially large volume of data involved, running the notebook in its entirety can take many hours. This may yield very interesting results, but you may alternatively be interested in a quick overview. Some key parameters and options have been designed to help you (and especially me) to run through tests fairly quickly. The following settings are critical for performance and running times:
+* `weModel`: Tests have shown - not surprisingly - far better quality and nuance of results with higher dimension word embeddings. However, start times and running times in calculating the soft cosine similarity matrix easily run into hours (or a dead end) with `fasttext-wiki-news-subwords-300`. For speed, definitely use the preconfigured `glove-wiki-gigaword-50`.
+* `removeTopics`: If set to `False`, then the running time will be typically (depending also on number of topics required and specified thresholds) a factor 3 or 4 longer. Theoretically you may miss out on some possible clustering which the soft cosine method finds but TF-IDF doesn't by the removal of articles, but it's probably sufficient to specify a few topics more to compensate and save hours of computational time, by using this flag.
 * `collectFeeds`: If you just want to play with the test data and don't need fresh articles, the scraping stage can be skipped by setting this to `False`
-* `articleLimit`: By setting this to 1000 or less you can get a quick overview of the analysis results. If you want to be sure to miss none of the article content, you have to set this to `None`, though. Probably time tp grab a capuccino, in that case :-)
-* `thresholdFuzzy`and `thresholdCosine`: in practice you get to see some optically interesting results with lower values here. However this costs time and tends to include clustering which will be more like noise than anything else.
+* `articleLimit`: By setting this to 1000 or less you can get a quick overview of the analysis results. If you want to be sure to miss none of the article content, you have to set this to `None`, though. Probably time to grab a capuccino, in that case :-)
+* `thresholdFuzzy`and `thresholdCosine`: in practice you get to see some optically interesting results with lower values here. However this costs time and tends to include clustering which will effectively produce more noise than anything else.
 
 ### Test Data
 Two crucial sets of data are supplied to help the user get up and running very quickly.
-1. A set of 50 fully tested RSS-Feed URLs, which are loaded from the function `getFeedDict()`. The user can simply specify custom values in an equivalently structured dictionary,  .e.g.
-> ``` {'Buzzfeed': 'https://www.buzzfeed.com/world.xml', 'Al Jazeera': 'http://www.aljazeera.com/xml/rss/all.xml'}```
-2. A corpora of over 11000 articles which have been collected between 02.05.2020 and 31.05.2020 daily from the 50 RSS-feeds mentioned in 1.  
-An article limit `articleLimit` can be specified for test purposes to take a randomized sample of documents from the test corpora. It should be mentioned that with 10000 documents the runtime for the complete notebook runs into several hours.
+1. A set of 50 fully tested RSS-Feed URLs, which can be conveniently loaded from the function `getFeedDict()`. The user can simply specify custom values in an equivalently structured dictionary,  .e.g.
+> ```python {'Buzzfeed': 'https://www.buzzfeed.com/world.xml', 'Al Jazeera': 'http://www.aljazeera.com/xml/rss/all.xml','The Guardian': 'https://www.theguardian.com/world/rss','CNBC': 'https://www.cnbc.com/id/100727362/device/rss/rss.html','RT': 'https://www.rt.com/rss/news/'}```
+2. A corpus of over 11000 articles which have been collected between 02.05.2020 and 31.05.2020 daily from the 50 RSS-feeds mentioned in 1.  
+An article limit `articleLimit` can be specified for test purposes to take a randomized sample of documents from the test corpus. It should be mentioned that with 11000 documents the runtime for the complete notebook may run into into several hours, dependant on CPU power and RAM.
 
 ### Features
 
-Initially the user can load data from a pre-configured set of 50 RSS-Feeds, or specify custom feeds for scraping. This takes typically aproximately 75s (can be skipped using runParam `collectFeeds`. Additionally there is a large corpus of test data in the directory [data directory](./data/) which may be loaded for test purposes.
+Initially the user can load data from a pre-configured set of 50 RSS-Feeds, or specify custom feeds for scraping. This takes typically around 75s (can be skipped using runParam `collectFeeds`. Additionally there is a large corpus of test data in the directory [data directory](./data/) which may be loaded for test purposes.
 
 The steps which can be walked through are:
 1. Custom configuration of `runParam`
 2. Data collection from the specified RSS-feeds. The collected data is saved in pickle format to the [data directory](./data/) 
 3. All data from the test corpus in [data directory](./data/)  are loaded. The number of articles may be reduced according to runParam articleLimit`. The HTML content is parsed and stripped of tags, some data cleaning occurs to remove some articles which are known to not contain sinle stories, but rather collections of all the day's news.
-4. A brief summary of the articles scraped/loaded is displayed in tabular form as a quick check (note that a more thorough biew of the content is available later in the content viewer
+4. A brief summary of the articles scraped/loaded is displayed in tabular form as a quick check (note that a more thorough view of the content is available later using the content viewer
 5. To get an impression of the range of publish dates and article sizes per feed a box-plot is created
 6. A statistical overview of the most prolific authors is displayed
 7. Statistical overviews of the most used tags - as specified by the publishers - are displayed (bar chart and scatterplot)
