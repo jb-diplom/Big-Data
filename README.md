@@ -102,17 +102,29 @@ The user may specify the number of topics to display and the cut-off threshold f
 16. Finally the user can browse through the article content grouped by topic. The article content together with a subset of meta-data for the article is displayed in a viewer.
 
 ## Some Grafics from the Notebook
+
 ###Article Sizes
+
 [Article Sizes](./images/ArticleSizes.png)
+
 ###Tag Usage
+
 [Tag Usage](./images/TagUsage.png)
+
 ###Cosine Similarity (3d interactive plot)
+
 [3d Cosine Similarity](./images/3dCosineSimilarity1.png)
+
 ###LDA Visualization (pyLDAvis interactive viewer)
+
 [LDA Visualization](./images/pyLDAvis.png)
+
 ###Sentiment Analysis (3d interactive plot)
+
 [Sentiment Analysis](./images/SentiAnalysis2.png)
+
 ###Content Viewer
+
 [Content Viewer](./images/ContentViewer.png)
 
 ## Versioning
