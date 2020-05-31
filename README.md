@@ -102,7 +102,7 @@ The steps which can be walked through are:
 1. Custom configuration of `runParam`
 2. Data collection from the specified RSS-feeds. The collected data is saved in pickle format to the [data directory](./data/) 
 3. All data from the test corpus in [data directory](./data/)  are loaded. The number of articles may be reduced according to runParam articleLimit`. The HTML content is parsed and stripped of tags, some data cleaning occurs to remove some articles which are known to not contain sinle stories, but rather collections of all the day's news.
-4. A brief summary of the articles scraped/loaded is displayed in tabular form as a quick check (note that a more thorough view of the content is available later using the [content viewer](### Content Viewer)
+4. A brief summary of the articles scraped/loaded is displayed in tabular form as a quick check (note that a more thorough view of the content is available later using the [content viewer](###-content-viewer)
 5. To get an impression of the range of publish dates and article sizes per feed a box-plot is created
 6. A statistical overview of the most prolific authors is displayed
 7. Statistical overviews of the most used tags - as specified by the publishers - are displayed (bar chart and scatterplot)
