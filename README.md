@@ -4,7 +4,7 @@ Multiple visualizations are displayed in a Jupyter Notebook.
 
 ## Getting Started
 
-The easiest approach is to clone this repository (https://github.com/jb-diplom/Big-Data/edit/master/README.md) and test the Notebook [RSSNewsIdentification.ipynb](./RSSNewsIdentification.ipynb) on Jupyter.
+The easiest approach is to clone this repository (https://github.com/jb-diplom/Big-Data/edit/master/README.md) and test the Notebook [RSSNewsIdentification.ipynb](./RSSNewsIdentification.ipynb) on Jupyter. An accompanying documentation can be found in this directory: https://github.com/jb-diplom/Big-Data/tree/master/docs.
 
 ### Prerequisites
 
@@ -67,6 +67,7 @@ runParams={'allFeeds':       getFeedDict(),   # A collection of 50 URLs for RSS 
                                               # massive amounts of data which can easily take as much as an hour.
            'thresholdFuzzy': 60,              # define cut-off threshold for fuzzy (Levenshtein Distance comparison) in percent
            'thresholdCosine':0.60,            # define cut-off threshold for soft cosine similarity as fraction (0.0 to 1.0)
+           'thresholdCosDispl':0.6,           # define cut-off threshold for displaying soft cosine similarity as fraction
            'fuzzyDocLimit':  None,            # optional integer limit to number of articles used for fuzzy relevance of
                                               # topics (only for test purposes: default is None) 
            'matrixDir':      './outdata',     # relative path for saving matrices to file
