@@ -182,14 +182,9 @@ def getFeedDict():
 #%% collectArticles
 
 def collectArticles(myfeeds=getFeedDict()):
-    
-    # Primary source of feeds https://blog.feedspot.com/world_news_rss_feeds/
-    # TODO put feed data in a separate configurable dictionary
 
-    
     allFeeds={}
     # The critical collection of all articles
-    # TODO tries=collections.defaultdict(lambda : None)
     allEntries={}
     # bar = trange(len(myfeeds.items()))
 
@@ -308,8 +303,6 @@ def summarizeByDate(dict1):
         if aDate!=None:
             articleDate.append(aDate)
             feedNames.append(val.feed_name)
-# TODO add actual content etc for tooltip (in val.collatedContents)
-# TODO add tags and/or topics to use instead of feedname in swarmplot
         articleSize.append(getRssArticleSize(val))
             
     outDict={"Source":feedNames, "Article Size (words)":articleSize, "Date":articleDate, "labels":feedNames}
@@ -441,25 +434,25 @@ def loadAllFeedsFromFile(path = "data", limitsize=None ): #this is probably a st
 #%% getSampleDocs
 # TODO getSampleDocs should be removed everywhere - it's just a test function'
 # presumably replace with getDocList
-def getSampleDocs(num = 40):
-    allEntryDict=loadAllFeedsFromFile()
-    docs=[]
-    i=0 # use to break out at num
-    for key, val in allEntryDict.items():
-        html=""
-        if hasattr(val , "content"):
-            for line in val.content:
-                html = html + " " + line.value
-        elif hasattr(val , "summary_detail"):
-            html = val.summary_detail.value
-        else:
-            continue
-        i +=1
-        docs.append(val.title +" " + getStringContents(html))
-        if i > num :
-            break
+# def getSampleDocs(num = 40):
+#     allEntryDict=loadAllFeedsFromFile()
+#     docs=[]
+#     i=0 # use to break out at num
+#     for key, val in allEntryDict.items():
+#         html=""
+#         if hasattr(val , "content"):
+#             for line in val.content:
+#                 html = html + " " + line.value
+#         elif hasattr(val , "summary_detail"):
+#             html = val.summary_detail.value
+#         else:
+#             continue
+#         i +=1
+#         docs.append(val.title +" " + getStringContents(html))
+#         if i > num :
+#             break
             
-    return docs 
+#     return docs 
 
 #%% collateDocContents
 
@@ -556,6 +549,6 @@ def smallDict(d, sample=10):
 # collectArticles()
 # allDict=loadAllFeedsFromFile()
 # summarizeItems(allDict) # Output panda Table summarizing all articles
-# swarm=summarizeByDate(allDict) # TODO do we need all the feeds shown on the swarm plot?
+# swarm=summarizeByDate(allDict) 
     
 # displayTopicsAndFeeds(allDict)

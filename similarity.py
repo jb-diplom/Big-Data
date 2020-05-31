@@ -10,10 +10,7 @@ import math
 from gensim import models, corpora
 from gensim.utils import simple_preprocess
 import numpy as np
-#  TODO REmove? from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd
-#  TODO rm? from sklearn.metrics.pairwise import cosine_similarity
-#  TODO rm? import ipywidgets as widgets
 from IPython.display import display
 from gensim.matutils import softcossim
 import datetime
@@ -167,11 +164,8 @@ def deriveSoftCosineSimilarityMatrix(allDict, limit=None, weName="glove-wiki-gig
     # pyDAVis param "lda"
     tf_idf = models.TfidfModel(sentences)
 
-
     # Prepare the similarity matrix
-    # TODO Check if some of these parameters can be used to begin with rather than filtering later
-    # TODO Shouldn't the tf_idf from below be put into this call?
-    similarity_matrix = model.similarity_matrix(    dictionary, 
+    similarity_matrix = model.similarity_matrix(    dictionary,
                                                     tfidf=tf_idf,
                                                     threshold=0.3,
                                                     exponent=2.0, 
@@ -251,9 +245,6 @@ def calculateXYZByPCAMethod(df, clusterNumber=20, threshold=0.5):
 # Add the spectral analysis as additional column onto the dataframe
     new_df['specGroup'] = sc
     new_df['size'] = sizes
-# TODO add publication date for optionally colouring according to date
-# TODO add feedname date for optionally colouring according to feedname
-# TODO add article sizedate for optionally sizing balls according to article size
 
     return new_df
 
@@ -297,7 +288,6 @@ def plotScatter3D(df, mytitle, allDict, notebook=True):
             color=df["specGroup"],
             colorscale='Viridis',
             colorbar = dict(title= "Topic<br>Relevance"),
-            # symbol=df["specGroup"], # TODO actually want Feedname
             showscale=True,
             opacity=0.6
         ),
@@ -425,18 +415,10 @@ def preparePyLDAvisData(allDict, limit=None, numTopics=30):
     for i,j in docsZip:
         documents.append(j)
         ids.append(i)
-    # model=getWordEmbeddingModel() # TODO delete this
     # Create gensim Dictionary of unique IDs of all words in all documents
     # pyDAVis param "d"
     dictionary = corpora.Dictionary([simple_preprocess(doc) for doc in documents])
 
-    # Prepare the similarity matrix
-    # TODO Check if some of these parameters can be used to begin with rather than filtering later
-    # similarity_matrix = model.similarity_matrix(    dictionary, # TODO Delete this block
-    #                                                 tfidf=None, 
-    #                                                 threshold=0.0, 
-    #                                                 exponent=2.0, 
-    #                                                 nonzero_limit=100)
     # Convert the sentences into bag-of-words vectors.
     sentences=[]     # pyDAVis param "c"
     for doc in documents:

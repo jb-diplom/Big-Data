@@ -39,13 +39,6 @@ import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 from tqdm.notebook import tqdm
 
-# TODO something for the readme.txt Do one time only to get wordnet for Lemmatization
-# import nltk
-# nltk.download() # --> and choose Corpora/wordnet
-# For data-structure visualization
-# conda install python-graphviz
-# pip install lolviz
-
 # Source: https://www.kaggle.com/arthurtok/spooky-nlp-and-topic-modelling-tutorial#3.-Topic-modelling
 
 #%% getDocList
@@ -214,13 +207,6 @@ def deriveTopicMaps(sentences, stopW=getCustomStopWords(), maxNum=30, ngram_rang
 #%% unzipLeftSide
 def unzipLeftSide(iterable):
     return zip(*iterable).__next__()
-
-#%% TODO Do same thing for CosineSimilarities
-# TODO Do same thing for CosineSimilarities (but multiply them by 100)
-# remake the matrix with the full Ids of the Documents, then write them back 
-# to the allEntryDict
-# need to do deletions (if at all) after F and testSoftCosine have
-# been applied
 
 #%% updateDictionaryByFuzzyRelevanceofTopics
 

@@ -4,25 +4,24 @@ Created on Tue May 26 18:10:08 2020
 
 @author: Janice
 """
-from reader import loadAllFeedsFromFile,getStringContents,getRssArticleDate,smallDict
+from reader import loadAllFeedsFromFile,getRssArticleDate,smallDict
 from topicmap import (unzipLeftSide,getDocList,deriveTopicMaps,
                       updateDictionaryByFuzzyRelevanceofTopics)
 from similarity import getAuthorFromRssEntry,getCustomStopWords
 
 import ipywidgets as widgets
 from IPython.display import display, clear_output
-from ipywidgets import Layout, Button, Box, VBox, HBox
+from ipywidgets import Layout, Box, VBox
 
 import nltk
 from nltk.sentiment import vader
 
-import matplotlib.pyplot as plt
 import pandas as pd
-from dateutil.parser import *
+from dateutil.parser import parse
 
 import plotly
 import plotly.graph_objs as go
-from tqdm.notebook import trange, tqdm
+from tqdm.notebook import tqdm
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -100,7 +99,7 @@ def headerSentiText(rssEntry):
     negSent = rssEntry["sentiment"]["neg"]
     neuSent = rssEntry["sentiment"]["neu"]
     compSent = rssEntry["sentiment"]["compound"]
-    auth = getAuthorFromRssEntry(rssEntry)
+    getAuthorFromRssEntry(rssEntry)
     if hasattr(rssEntry , "updated"):
         dt=parse(rssEntry.updated, ignoretz=True)
     else:
@@ -149,7 +148,7 @@ def tooltipSentiText(rssEntry):
     negSent = rssEntry["sentiment"]["neg"]
     neuSent = rssEntry["sentiment"]["neu"]
     compSent = rssEntry["sentiment"]["compound"]
-    auth = getAuthorFromRssEntry(rssEntry)
+    auth = getAuthorFromRssEntry(rssEntry) # TODO add auth to tooltip
     if hasattr(rssEntry , "updated"):
         dt=parse(rssEntry.updated, ignoretz=True)
     else:
@@ -194,11 +193,9 @@ def plotSentiment3D(df2, allDict, notebook=True, topic=""):
             color=df2['Overall'],
             colorscale='Inferno',
             colorbar = dict(title= "Compound<br>Sentiment"),
-            # symbol=df["specGroup"], # TODO actually want Feedname
             showscale=True,
             opacity=0.7,
         ),
-        # symbol=df["specGroup"],
         text=statTooltips,
         textfont=dict(family="sans serif",size=8,color='crimson'),
         hoverinfo='text'
@@ -216,7 +213,6 @@ def plotSentiment3D(df2, allDict, notebook=True, topic=""):
     camera = dict( eye=dict(x=1.5, y=1.5, z=0.1))
     plot_figure.update_layout(scene_camera=camera)
 
-    #plt.tight_layout()
     go.FigureWidget(data=data, layout=layout)
    
     pl=plotly.offline.iplot(plot_figure)
