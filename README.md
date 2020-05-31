@@ -101,7 +101,7 @@ The user may specify the number of topics to display and the cut-off threshold f
 15. A sentiment analysis of each article is conducted using Vader. A 3d scatterplot of the sentiment for topically grouped sets of articles. The coordinates are derived from the positiv, negativ and neutral sentiment values. The colour represents the compound sentiment. The size of the bubbles are exponentially proportional to the strength of topicality (cf topical relevance percentage in 9. above) for the preferred topic which can be conveniently chosen from a pull-down list of possible topics. A change of topic triggers a redraw of the 3d-visualization.
 16. Finally the user can browse through the article content grouped by topic. The article content together with a subset of meta-data for the article is displayed in a viewer.
 
-## Some Grafics from the Notebook
+## Some Graphics from the Notebook
 ### Article Sizes
 ![Article Sizes](./images/ArticleSizes.png)
 ### Tag Usage
